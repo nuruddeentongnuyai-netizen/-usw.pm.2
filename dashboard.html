@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>แดชบอร์ดระบบบำบัดน้ำเสีย | EcoPure</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Sarabun:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body style="padding-top: 20px; background: #f4f6f9;">
+
+    <div class="container" style="max-width: 900px; background: #fff; padding: 30px; border-radius: 8px; box-shadow: 0 4px 10px rgba(0,0,0,0.05);">
+        <div style="display: flex; justify-content: space-between; align-items: center; border-bottom: 2px solid #eee; padding-bottom: 20px; margin-bottom: 30px;">
+            <h2>📊 ระบบมอนิเตอร์เครื่องบำบัดน้ำเสีย (ข้อมูลจำลอง)</h2>
+            <button id="logoutBtn" class="btn" style="background: #d90429;">ออกจากระบบ</button>
+        </div>
+
+        <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));">
+            <div class="card" style="border-top: 5px solid #2a9d8f;">
+                <h3>ค่าน้ำเข้า (pH)</h3>
+                <p style="font-size: 32px; font-weight: bold; color: #2a9d8f; margin-top: 10px;">5.4</p>
+                <span style="color: #e76f51;">⚠️ ค่อนข้างเป็นกรด</span>
+            </div>
+            <div class="card" style="border-top: 5px solid #0077b6;">
+                <h3>ค่าน้ำออก (pH)</h3>
+                <p style="font-size: 32px; font-weight: bold; color: #0077b6; margin-top: 10px;">7.2</p>
+                <span style="color: #2a9d8f;">✅ ผ่านเกณฑ์มาตรฐาน</span>
+            </div>
+            <div class="card" style="border-top: 5px solid #e9c46a;">
+                <h3>ปริมาณน้ำที่บำบัดวันนี้</h3>
+                <p style="font-size: 32px; font-weight: bold; color: #e9c46a; margin-top: 10px;">1,450 ลิตร</p>
+                <span>กำลังทำงานปกติ</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ตรวจสอบความปลอดภัยเบื้องต้น: ถ้ายังไม่ได้ล็อกอิน ให้เด้งกลับไปหน้า login
+        if (localStorage.getItem('isLoggedIn') !== 'true') {
+            window.location.href = 'login.html';
+        }
+
+        // ระบบออกจากระบบ (Logout)
+        document.getElementById('logoutBtn').addEventListener('click', function() {
+            localStorage.removeItem('isLoggedIn');
+            window.location.href = 'index.html';
+        });
+    </script>
+</body>
+</html>
