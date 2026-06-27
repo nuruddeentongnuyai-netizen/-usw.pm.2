@@ -225,8 +225,8 @@
                 localStorage.setItem("isLoggedIn", "true");
                 localStorage.setItem("currentUser", displayName);
                 
-                // 🚀 ลบกล่องแจ้งเตือนออกแล้ว สั่งเด้งเปลี่ยนไปหน้า index.html ทันทีแบบรวดเร็ว!
-                window.location.replace("index.html");
+                // 🚀 เปลี่ยนตรงนี้ให้เด้งไปหน้าต่อไปที่คุณต้องการได้เลย (ตอนนี้ตั้งไว้เป็น dashboard.html)
+                window.location.replace("dashboard.html");
             } else {
                 document.getElementById("errorMsg").innerHTML = `
                     ❌ ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง <br>
