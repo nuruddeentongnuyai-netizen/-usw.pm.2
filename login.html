@@ -126,6 +126,7 @@
             <div id="errorMsg" class="error-msg">❌ ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง</div>
             <div id="regErrorMsg" class="error-msg">❌ กรุณากรอกข้อมูลให้ครบถ้วน และรหัสผ่านต้องตรงกัน</div>
 
+            <!-- ฟอร์มเข้าสู่ระบบ -->
             <div id="loginForm">
                 <h2 style="margin-bottom: 25px; text-align: center; color: #1e3a8a; font-weight: 600;">เข้าสู่ระบบผู้ดูแลระบบ</h2>
                 <div class="input-group">
@@ -142,6 +143,7 @@
                 </div>
             </div>
 
+            <!-- ฟอร์มสมัครสมาชิก -->
             <div id="registerForm" style="display: none;">
                 <h2 style="margin-bottom: 25px; text-align: center; color: #1e3a8a; font-weight: 600;">สมัครสมาชิกใหม่</h2>
                 <div class="input-group">
@@ -220,14 +222,11 @@
             if((user === "admin" && pass === "1234") || (localUser && user === localUser && pass === localPass)) {
                 var displayName = user === "admin" ? "ผู้ดูแลระบบสูงสุด" : localName;
                 
-                // บันทึกสถานะว่าล็อกอินสำเร็จแล้วลงเครื่อง เผื่อหน้าอื่นอยากเอาไปใช้
                 localStorage.setItem("isLoggedIn", "true");
                 localStorage.setItem("currentUser", displayName);
                 
-                alert("🎉 เข้าสู่ระบบสำเร็จ ยินดีต้อนรับคุณ " + displayName);
-                
-                // 🚀 ล็อกอินผ่านแล้วให้ดีดไปหน้าแรก (index.html) ทันที ข้อมูลไม่ค้างหน้าจอสีเขียวแล้ว
-                window.location.href = "index.html"; 
+                // 🚀 ลบกล่องแจ้งเตือนออกแล้ว สั่งเด้งเปลี่ยนไปหน้า index.html ทันทีแบบรวดเร็ว!
+                window.location.replace("index.html");
             } else {
                 document.getElementById("errorMsg").innerHTML = `
                     ❌ ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง <br>
