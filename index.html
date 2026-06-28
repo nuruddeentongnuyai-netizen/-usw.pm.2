@@ -3,52 +3,49 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>EcoPure - เทคโนโลยีบำบัดน้ำเสีย</title>
+    <title>EcoPure - หน้าแรก</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;600&display=swap" rel="stylesheet">
     <style>
-        body { font-family: 'Kanit', sans-serif; }
-        
-        /* ส่วนพื้นหลังโรงงานอุตสาหกรรม */
-        .hero-section {
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
-                        url('https://images.unsplash.com/photo-1581092160607-ee227c1dd75a?auto=format&fit=crop&w=1920&q=80');
-            background-size: cover;
-            background-position: center;
-            background-repeat: no-repeat;
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            color: white;
-            padding: 20px;
+        /* บังคับให้ทุกส่วนเป็นฟอนต์ Kanit */
+        body { 
+            font-family: 'Kanit', sans-serif; 
+            margin: 0;
+            padding: 0;
+            background-color: #ffffff; /* บังคับพื้นหลังเป็นสีขาวล้วน */
         }
     </style>
 </head>
-<body>
+<body class="bg-white text-slate-800">
 
-    <nav class="absolute top-0 w-full p-6 flex justify-between items-center text-white z-20">
-        <div class="text-2xl font-bold">EcoPure</div>
-        <div class="flex gap-6 text-sm">
-            <a href="#" class="border-b-2 border-white pb-1">หน้าแรก</a>
-            <a href="features.html" class="hover:text-blue-200 transition">คุณสมบัติ</a>
-            <a href="products.html" class="hover:text-blue-200 transition">สินค้า</a>
-            <a href="contact.html" class="hover:text-blue-200 transition">ติดต่อ</a>
-            <a href="login.html" class="bg-blue-600 px-4 py-2 rounded-lg hover:bg-blue-700 transition">เข้าสู่ระบบ</a>
+    <nav class="w-full py-6 px-10 flex justify-between items-center">
+        <div class="text-2xl font-bold text-blue-600 tracking-tight">EcoPure</div>
+        <div class="flex gap-8 text-sm font-medium">
+            <a href="index.html" class="text-blue-600 border-b-2 border-blue-600 pb-1">หน้าแรก</a>
+            <a href="features.html" class="text-slate-600 hover:text-blue-600 transition">คุณสมบัติ</a>
+            <a href="products.html" class="text-slate-600 hover:text-blue-600 transition">สินค้า</a>
+            <a href="contact.html" class="text-slate-600 hover:text-blue-600 transition">ติดต่อ</a>
+            <a href="login.html" class="bg-blue-600 text-white px-5 py-2 rounded-lg hover:bg-blue-700 transition">เข้าสู่ระบบ</a>
         </div>
     </nav>
 
-    <section class="hero-section">
-        <h1 class="text-5xl md:text-6xl font-bold mb-4">เทคโนโลยีบำบัดน้ำเสีย เพื่ออนาคตที่ยั่งยืน</h1>
-        <p class="text-lg md:text-xl text-gray-200 mb-8 max-w-2xl">เครื่องบำบัดน้ำเสียประสิทธิภาพสูง ประหยัดพลังงาน เป็นมิตรต่อสิ่งแวดล้อม</p>
+    <main class="flex flex-col items-center justify-center min-h-[70vh] text-center px-6">
+        <h1 class="text-6xl font-bold text-slate-900 mb-6 leading-tight">
+            เทคโนโลยีบำบัดน้ำเสีย <br>เพื่ออนาคตที่ยั่งยืน
+        </h1>
+        <p class="text-lg text-slate-500 mb-10 max-w-xl">
+            เครื่องบำบัดน้ำเสียประสิทธิภาพสูง ประหยัดพลังงาน เป็นมิตรต่อสิ่งแวดล้อม
+        </p>
         
         <div class="flex gap-4">
-            <a href="products.html" class="bg-white text-slate-800 px-8 py-3 rounded-full font-semibold hover:bg-gray-100 transition">ดูสินค้าของเรา</a>
-            <a href="contact.html" class="border border-white text-white px-8 py-3 rounded-full font-semibold hover:bg-white hover:text-slate-800 transition">ติดต่อสอบถาม</a>
+            <a href="products.html" class="bg-blue-600 text-white px-8 py-3 rounded-full font-semibold hover:bg-blue-700 transition shadow-lg">
+                ดูสินค้าของเรา
+            </a>
+            <a href="contact.html" class="bg-white border border-slate-200 text-slate-700 px-8 py-3 rounded-full font-semibold hover:bg-slate-50 transition">
+                ติดต่อสอบถาม
+            </a>
         </div>
-    </section>
+    </main>
 
 </body>
 </html>
