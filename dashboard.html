@@ -13,7 +13,6 @@
 <body class="p-6">
 
 <div class="max-w-6xl mx-auto">
-    <!-- Header -->
     <div class="flex justify-between items-end mb-8">
         <div>
             <h1 class="text-3xl font-bold text-slate-800">Smart Water Monitor</h1>
@@ -27,26 +26,24 @@
 
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div class="lg:col-span-2 space-y-6">
-            <!-- Section 1 -->
             <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm">
                 <h2 class="text-lg font-semibold mb-4 text-slate-700">1. เลือกแหล่งกำเนิดน้ำเสีย</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                    <button onclick="selectWater(this, 5.6, 155, 75, 'น้ำเสียจากครัวเรือน', 'พบสารแขวนลอยและแอมโมเนีย')" class="source-card text-left p-4 rounded-2xl border-2 border-slate-100 hover:border-blue-400 hover:bg-slate-50 transition">
+                    <button onclick="selectWater(this, 5.6, 155, 75, 'น้ำเสียจากครัวเรือน')" class="source-card text-left p-4 rounded-2xl border-2 border-slate-100 hover:border-blue-400 hover:bg-slate-50 transition">
                         <p class="font-bold text-slate-700">🏠 น้ำเสียจากครัวเรือน</p>
                     </button>
-                    <button onclick="selectWater(this, 6.3, 85, 45, 'บ่อพักน้ำโรงเรียน', 'น้ำขังเน่าเสียจากใบไม้')" class="source-card text-left p-4 rounded-2xl border-2 border-slate-100 hover:border-blue-400 hover:bg-slate-50 transition">
-                        <p class="font-bold text-slate-700">🏫 น้ำขังเน่าเสียในบ่อโรงเรียน</p>
+                    <button onclick="selectWater(this, 6.3, 85, 45, 'บ่อพักน้ำโรงเรียน')" class="source-card text-left p-4 rounded-2xl border-2 border-slate-100 hover:border-blue-400 hover:bg-slate-50 transition">
+                        <p class="font-bold text-slate-700">🏫 บ่อพักน้ำโรงเรียน</p>
                     </button>
-                    <button onclick="selectWater(this, 5.0, 210, 30, 'น้ำจากแปลงเกษตร', 'มีการปนเปื้อนปุ๋ย')" class="source-card text-left p-4 rounded-2xl border-2 border-slate-100 hover:border-blue-400 hover:bg-slate-50 transition">
+                    <button onclick="selectWater(this, 5.0, 210, 30, 'น้ำจากแปลงเกษตร')" class="source-card text-left p-4 rounded-2xl border-2 border-slate-100 hover:border-blue-400 hover:bg-slate-50 transition">
                         <p class="font-bold text-slate-700">🌱 น้ำระบายจากแปลงเกษตร</p>
                     </button>
-                    <button onclick="selectWater(this, 5.9, 360, 90, 'น้ำคลองในเมือง', 'น้ำเสียจากท่อระบายน้ำ')" class="source-card text-left p-4 rounded-2xl border-2 border-slate-100 hover:border-blue-400 hover:bg-slate-50 transition">
+                    <button onclick="selectWater(this, 5.9, 360, 90, 'น้ำคลองในเมือง')" class="source-card text-left p-4 rounded-2xl border-2 border-slate-100 hover:border-blue-400 hover:bg-slate-50 transition">
                         <p class="font-bold text-slate-700">🚣 น้ำคลองระบายน้ำใจกลางเมือง</p>
                     </button>
                 </div>
             </div>
 
-            <!-- Section 2 -->
             <div class="bg-white p-6 rounded-3xl border border-slate-200 shadow-sm">
                 <h2 class="text-lg font-semibold mb-6 text-slate-700">2. แอนิเมชันห้องกรองเครื่องบำบัด</h2>
                 <div class="flex justify-between items-end h-40 bg-slate-100 rounded-2xl p-6 mb-6">
@@ -54,26 +51,20 @@
                     <div class="text-center w-24"><div class="h-24 bg-slate-200 w-full rounded-xl relative overflow-hidden"><div id="barB" class="filter-bar absolute bottom-0 w-full bg-teal-400 h-0"></div></div><p class="text-xs mt-3 font-bold text-slate-700">CARBON</p></div>
                     <div class="text-center w-24"><div class="h-24 bg-slate-200 w-full rounded-xl relative overflow-hidden"><div id="barC" class="filter-bar absolute bottom-0 w-full bg-blue-500 h-0"></div></div><p class="text-xs mt-3 font-bold text-slate-700">UV / OUT</p></div>
                 </div>
-                <div class="grid grid-cols-2 gap-4">
-                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200"><p class="text-xs font-bold text-slate-500 mb-1">ข้อมูลขาเข้า (Input)</p><p id="desc-input" class="text-sm text-slate-700">กรุณาเลือกแหล่งน้ำเสีย</p></div>
-                    <div class="bg-slate-50 p-4 rounded-xl border border-slate-200"><p class="text-xs font-bold text-green-600 mb-1">ผลลัพธ์ (Output)</p><p id="desc-output" class="text-sm text-slate-700">รอการบำบัด...</p></div>
-                </div>
             </div>
         </div>
 
-        <!-- Section 3 -->
         <div class="space-y-4">
             <h2 class="text-lg font-semibold text-slate-700 mb-2">3. แผงวัดค่าข้อมูล</h2>
             <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm"><div><p class="text-xs text-slate-400">ค่า pH</p><p id="val-ph" class="text-2xl font-bold text-slate-800">0.0</p></div></div>
             <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm"><div><p class="text-xs text-slate-400">ความขุ่น (NTU)</p><p id="val-turb" class="text-2xl font-bold text-slate-800">0</p></div></div>
             <div class="bg-white p-5 rounded-2xl border border-slate-200 shadow-sm"><div><p class="text-xs text-slate-400">ดัชนีกลิ่นเหม็น</p><p id="val-odor" class="text-2xl font-bold text-slate-800">0%</p></div></div>
 
-            <div class="bg-slate-900 p-5 rounded-2xl border border-slate-800 shadow-md mt-6 text-white">
-                <h3 class="text-sm font-semibold mb-3 flex items-center">📋 บันทึกการกรองล่าสุด</h3>
+            <div class="bg-slate-900 p-5 rounded-2xl border border-slate-800 shadow-md mt-6 text-white h-64 overflow-y-auto">
+                <h3 class="text-sm font-semibold mb-3">📋 ประวัติบันทึกการทำงาน</h3>
                 <table class="w-full text-xs text-left">
                     <tbody id="log-table">
-                        <tr><td class="py-2 text-slate-400">--:--</td><td class="py-2 text-slate-400">รอข้อมูล...</td></tr>
-                    </tbody>
+                        </tbody>
                 </table>
             </div>
         </div>
@@ -81,45 +72,31 @@
 </div>
 
 <script>
-    // ฟังก์ชันสำหรับเพิ่ม Log พร้อมเวลาแบบเรียลไทม์
+    // ฟังก์ชันบันทึกเวลาแบบเรียลไทม์และเก็บข้อมูลไว้ทั้งหมด
     function addLog(message, colorClass) {
         const logTable = document.getElementById('log-table');
         const now = new Date();
-        const timeString = now.toLocaleTimeString('th-TH', { hour: '2-digit', minute: '2-digit' });
+        const timeString = now.toLocaleTimeString('th-TH', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
         
         const row = document.createElement('tr');
-        row.innerHTML = `<td class="py-1 text-slate-400">${timeString}</td><td class="py-1 ${colorClass}">${message}</td>`;
-        logTable.prepend(row);
+        row.innerHTML = `<td class="py-1 text-slate-400 pr-2">${timeString}</td><td class="py-1 ${colorClass}">${message}</td>`;
+        logTable.prepend(row); // ข้อมูลใหม่ขึ้นบนสุด
     }
 
-    function selectWater(el, ph, turb, odor, inputDesc, detail) {
+    function selectWater(el, ph, turb, odor, name) {
         document.getElementById('val-ph').innerText = ph;
         document.getElementById('val-turb').innerText = turb;
         document.getElementById('val-odor').innerText = odor + "%";
-        document.getElementById('desc-input').innerText = inputDesc + ": " + detail;
-        document.getElementById('barA').style.height = '0%';
-        document.getElementById('barB').style.height = '0%';
-        document.getElementById('barC').style.height = '0%';
         document.querySelectorAll('.source-card').forEach(c => c.style.borderColor = "#e2e8f0");
         el.style.borderColor = "#3b82f6";
+        addLog(`เลือกแหล่งน้ำ: ${name}`, "text-yellow-400");
     }
 
     function startSystem() {
-        document.getElementById('log-table').innerHTML = ""; // ล้างค่าเก่า
-        addLog("เริ่มการบำบัด", "text-blue-400");
-        
+        addLog("เริ่มกระบวนการบำบัด...", "text-blue-400");
         document.getElementById('barA').style.height = '85%';
         document.getElementById('barB').style.height = '70%';
         document.getElementById('barC').style.height = '95%';
         
-        setTimeout(() => {
-            addLog("บำบัดสำเร็จ", "text-green-400");
-            document.getElementById('desc-output').innerText = "บำบัดเสร็จสิ้น: น้ำสะอาดพร้อมใช้งาน";
-            document.getElementById('val-ph').innerText = "7.2";
-            document.getElementById('val-turb').innerText = "1.6";
-            document.getElementById('val-odor').innerText = "0%";
-        }, 7000);
-    }
-</script>
-</body>
-</html>
+        // บันทึกเวลาตามขั้นตอน
+        setTimeout(() =>
