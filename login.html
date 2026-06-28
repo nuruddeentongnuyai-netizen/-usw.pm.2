@@ -6,21 +6,29 @@
     <title>EcoPure - เข้าสู่ระบบ</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600&display=swap" rel="stylesheet">
-    <style>
-        body { font-family: 'Prompt', sans-serif; }
-    </style>
+    <style>body { font-family: 'Prompt', sans-serif; }</style>
 </head>
 <body class="bg-slate-50 flex items-center justify-center min-h-screen p-4">
     <div class="bg-white p-8 rounded-3xl shadow-xl w-full max-w-sm border border-slate-100">
         
         <div id="loginForm">
             <h2 class="text-3xl font-bold text-center mb-8 text-slate-800">เข้าสู่ระบบ</h2>
+            
+            <div id="errorMsg" class="hidden bg-red-50 text-red-600 p-3 rounded-xl mb-4 text-sm text-center font-medium border border-red-200">
+                ❌ ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง
+            </div>
+
             <div class="space-y-4">
-                <input type="text" id="username" placeholder="ชื่อผู้ใช้งาน" class="w-full p-4 bg-slate-50 border border-slate-200 rounded-2xl focus:ring-2 focus:ring-blue-500 outline-none transition">
-                <input type="password" id="password" placeholder="รหัสผ่าน" class="w-full p-4 bg-slate-50 border border-slate-200 rounded-2xl focus:ring-2 focus:ring-blue-500 outline-none transition">
+                <input type="text" id="username" placeholder="ชื่อผู้ใช้งาน" class="w-full p-4 bg-slate-50 border border-slate-200 rounded-2xl outline-none focus:ring-2 focus:ring-blue-500">
+                <input type="password" id="password" placeholder="รหัสผ่าน" class="w-full p-4 bg-slate-50 border border-slate-200 rounded-2xl outline-none focus:ring-2 focus:ring-blue-500">
+                
                 <button onclick="checkLogin()" class="w-full bg-blue-600 text-white py-4 rounded-2xl font-bold hover:bg-blue-700 transition shadow-lg shadow-blue-200">เข้าสู่ระบบ</button>
             </div>
-            <p class="mt-6 text-center text-sm text-slate-500">ยังไม่มีบัญชี? <a onclick="toggleForm()" class="text-blue-600 font-bold cursor-pointer hover:underline">สมัครสมาชิกใหม่</a></p>
+            
+            <div class="mt-4 text-center space-y-2">
+                <p class="text-sm text-slate-500">ยังไม่มีบัญชี? <a onclick="toggleForm()" class="text-blue-600 font-bold cursor-pointer hover:underline">สมัครสมาชิกใหม่</a></p>
+                <p class="text-sm"><a onclick="forgotPassword()" class="text-slate-400 cursor-pointer hover:text-blue-600 text-xs underline">ลืมรหัสผ่าน?</a></p>
+            </div>
         </div>
 
         <div id="registerForm" class="hidden">
@@ -38,6 +46,7 @@
         function toggleForm() {
             document.getElementById('loginForm').classList.toggle('hidden');
             document.getElementById('registerForm').classList.toggle('hidden');
+            document.getElementById('errorMsg').classList.add('hidden');
         }
 
         function handleRegister() {
@@ -63,7 +72,17 @@
                 localStorage.setItem("isLoggedIn", "true");
                 window.location.href = "dashboard.html";
             } else {
-                alert("ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง");
+                document.getElementById("errorMsg").classList.remove("hidden");
+            }
+        }
+
+        function forgotPassword() {
+            var storedUser = localStorage.getItem("storedUser");
+            var storedPass = localStorage.getItem("storedPass");
+            if (storedUser) {
+                alert("💡 รหัสผ่านของคุณคือ: " + storedPass);
+            } else {
+                alert("❌ ยังไม่มีข้อมูลบัญชีผู้ใช้งานในระบบครับ");
             }
         }
     </script>
