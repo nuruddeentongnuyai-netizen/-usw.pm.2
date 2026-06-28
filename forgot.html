@@ -10,16 +10,19 @@
 <body class="bg-slate-50 flex items-center justify-center min-h-screen p-4">
     <div class="bg-white p-8 rounded-3xl shadow-xl w-full max-w-sm text-center">
         <h2 class="text-2xl font-bold mb-4 text-slate-800">กู้คืนรหัสผ่าน</h2>
-        <p class="text-sm text-slate-500 mb-6">ระบบจะล้างข้อมูลการใช้งานเครื่องนี้ เพื่อความปลอดภัย กรุณาติดต่อผู้ดูแลระบบ</p>
+        <p class="text-sm text-slate-500 mb-6">หากลืมรหัสผ่าน คุณสามารถล้างข้อมูลการใช้งานในเครื่องนี้ เพื่อเริ่มต้นใช้งานใหม่ได้</p>
+        
         <button onclick="clearData()" class="block w-full bg-red-500 text-white py-3 rounded-2xl font-bold hover:bg-red-600 transition mb-4">ล้างข้อมูลในเครื่องนี้</button>
-        <a href="login.html" class="block w-full bg-slate-200 text-slate-700 py-3 rounded-2xl font-bold hover:bg-slate-300 transition">กลับหน้าเข้าสู่ระบบ</a>
+        <a href="login.html" class="block w-full bg-slate-200 text-slate-700 py-3 rounded-2xl font-bold hover:bg-slate-300 transition">ย้อนกลับ</a>
     </div>
 
     <script>
         function clearData() {
-            localStorage.clear();
-            alert("ล้างข้อมูลรหัสผ่านเก่าในเครื่องนี้เรียบร้อยแล้ว!");
-            window.location.href = "login.html";
+            if(confirm("ยืนยันการล้างข้อมูลผู้ใช้เก่าออกจากเครื่องนี้?")) {
+                localStorage.clear();
+                alert("ล้างข้อมูลสำเร็จ! คุณสามารถสมัครสมาชิกใหม่ได้เลย");
+                window.location.href = "login.html";
+            }
         }
     </script>
 </body>
