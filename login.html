@@ -13,84 +13,41 @@
         .input-group { margin-bottom: 20px; position: relative; }
         .input-group i { position: absolute; left: 15px; top: 50%; transform: translateY(-50%); color: #94a3b8; }
         .input-group input { width: 100%; padding: 15px 12px 15px 45px; border: 2px solid #e2e8f0; border-radius: 10px; outline: none; font-size: 1rem; transition: all 0.3s; background-color: #f8fafc; }
-        .input-group input:focus { border-color: #1d4ed8; background-color: #fff; }
         button { width: 100%; padding: 14px; background: #1e40af; color: white; border: none; border-radius: 10px; font-size: 1.1rem; font-weight: bold; cursor: pointer; transition: background 0.3s; }
-        button:hover { background: #1d4ed8; }
-        .switch-form { text-align: center; margin-top: 25px; color: #64748b; }
-        .switch-form a { color: #1d4ed8; text-decoration: underline; font-weight: bold; cursor: pointer; }
-        .error-msg { color: #ef4444; background: #fee2e2; padding: 12px; border-radius: 8px; margin-bottom: 20px; display: none; font-size: 0.95rem; text-align: center; line-height: 1.5; }
+        .error-msg { color: #ef4444; background: #fee2e2; padding: 12px; border-radius: 8px; margin-bottom: 20px; display: none; font-size: 0.95rem; text-align: center; }
     </style>
-    <link href="https://fonts.googleapis.com/css2?family=Prompt:wght@300;400;600&display=swap" rel="stylesheet">
 </head>
 <body>
 
     <div class="container">
-        <div id="loginSection">
-            <div class="logo"><i class="fas fa-leaf" style="color: #2563eb;"></i> EcoPure</div>
-            <div id="errorMsg" class="error-msg">❌ ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง</div>
-            <div id="regErrorMsg" class="error-msg">❌ กรุณากรอกข้อมูลให้ครบถ้วน และรหัสผ่านต้องตรงกัน</div>
+        <div class="logo"><i class="fas fa-leaf" style="color: #2563eb;"></i> EcoPure</div>
+        <div id="errorMsg" class="error-msg">❌ ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง</div>
 
-            <div id="loginForm">
-                <h2 style="margin-bottom: 25px; text-align: center; color: #1e3a8a; font-weight: 600;">เข้าสู่ระบบผู้ดูแลระบบ</h2>
-                <div class="input-group">
-                    <i class="fas fa-user"></i>
-                    <input type="text" id="username" placeholder="ชื่อผู้ใช้งาน">
-                </div>
-                <div class="input-group">
-                    <i class="fas fa-lock"></i>
-                    <input type="password" id="password" placeholder="รหัสผ่าน">
-                </div>
-                <button onclick="checkLogin()">เข้าสู่ระบบ</button>
-                <div class="switch-form">ยังไม่มีบัญชีผู้ใช้? <a onclick="showRegister()">สมัครผู้ใช้ใหม่ที่นี่</a></div>
-            </div>
-
-            <div id="registerForm" style="display: none;">
-                <h2 style="margin-bottom: 25px; text-align: center; color: #1e3a8a; font-weight: 600;">สมัครสมาชิกใหม่</h2>
-                <div class="input-group"><i class="fas fa-id-card"></i><input type="text" id="regName" placeholder="ชื่อ-นามสกุล"></div>
-                <div class="input-group"><i class="fas fa-envelope"></i><input type="email" id="regEmail" placeholder="อีเมล"></div>
-                <div class="input-group"><i class="fas fa-user-plus"></i><input type="text" id="regUser" placeholder="ตั้งชื่อผู้ใช้งาน"></div>
-                <div class="input-group"><i class="fas fa-lock"></i><input type="password" id="regPass" placeholder="ตั้งรหัสผ่าน"></div>
-                <div class="input-group"><i class="fas fa-key"></i><input type="password" id="regPassConfirm" placeholder="ยืนยันรหัสผ่านอีกครั้ง"></div>
-                <button onclick="handleRegister()">ลงทะเบียน</button>
-                <div class="switch-form">มีบัญชีอยู่แล้ว? <a onclick="showLogin()">เข้าสู่ระบบ</a></div>
-            </div>
+        <div class="input-group">
+            <i class="fas fa-user"></i>
+            <input type="text" id="username" placeholder="ชื่อผู้ใช้งาน">
         </div>
+        <div class="input-group">
+            <i class="fas fa-lock"></i>
+            <input type="password" id="password" placeholder="รหัสผ่าน">
+        </div>
+        <button onclick="checkLogin()">เข้าสู่ระบบ</button>
     </div>
 
     <script>
-        function showRegister() { document.getElementById("loginForm").style.display = "none"; document.getElementById("registerForm").style.display = "block"; document.getElementById("errorMsg").style.display = "none"; document.getElementById("regErrorMsg").style.display = "none"; }
-        function showLogin() { document.getElementById("registerForm").style.display = "none"; document.getElementById("loginForm").style.display = "block"; document.getElementById("errorMsg").style.display = "none"; document.getElementById("regErrorMsg").style.display = "none"; }
-        function handleRegister() {
-            var fullName = document.getElementById("regName").value.trim();
-            var email = document.getElementById("regEmail").value.trim();
-            var newUser = document.getElementById("regUser").value.trim();
-            var newPass = document.getElementById("regPass").value;
-            var confirmPass = document.getElementById("regPassConfirm").value;
-            if(!fullName || !email || !newUser || !newPass || newPass !== confirmPass) { document.getElementById("regErrorMsg").style.display = "block"; return; }
-            localStorage.setItem("storedUser", newUser); localStorage.setItem("storedPass", newPass); localStorage.setItem("storedName", fullName);
-            alert("🎉 สมัครสมาชิกสำเร็จแล้ว!"); showLogin(); document.getElementById("username").value = newUser; document.getElementById("password").value = "";
-        }
         function checkLogin() {
             var user = document.getElementById("username").value.trim();
             var pass = document.getElementById("password").value;
-            var localUser = localStorage.getItem("storedUser");
-            var localPass = localStorage.getItem("storedPass");
-            if((user === "admin" && pass === "1234") || (localUser && user === localUser && pass === localPass)) {
+            
+            // ตรวจสอบล็อกอิน
+            if(user === "admin" && pass === "1234") {
+                // บันทึกสถานะว่าล็อกอินแล้ว
                 localStorage.setItem("isLoggedIn", "true");
-                window.location.replace("index.html"); 
+                // เด้งไปหน้า Dashboard ทันที
+                window.location.href = "dashboard.html";
             } else {
-                document.getElementById("errorMsg").innerHTML = `❌ ชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง <br><span style="color: #2563eb; cursor: pointer; text-decoration: underline; font-size: 0.9rem; font-weight: 600; display: inline-block; margin-top: 8px;" onclick="forgotPassword()">💡 ลืมรหัสผ่าน? คลิกที่นี่</span>`;
                 document.getElementById("errorMsg").style.display = "block";
             }
-        }
-        function forgotPassword() {
-            var user = document.getElementById("username").value.trim();
-            var localUser = localStorage.getItem("storedUser");
-            var localPass = localStorage.getItem("storedPass");
-            if (!user) { alert("💡 กรุณากรอก 'ชื่อผู้ใช้งาน' ก่อนครับ"); }
-            else if (user === "admin") { alert("🔑 บัญชีระบบสูงสุด (admin) รหัสผ่านคือ: 1234"); }
-            else if (localUser && user === localUser) { alert("🔑 รหัสผ่านของคุณคือ: " + localPass); }
-            else { alert("❌ ไม่พบชื่อผู้ใช้งานนี้ในระบบ"); }
         }
     </script>
 </body>
